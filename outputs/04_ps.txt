@@ -1,0 +1,47 @@
+UID          PID    PPID     LWP  C NLWP STIME TTY          TIME CMD
+root           1       0       1  0    1 17:26 ?        00:00:01 /sbin/init
+root           2       1       2  0    2 17:26 ?        00:00:00 /init
+root           2       1       8  0    2 17:26 ?        00:00:00 /init
+root           6       2       6  0    2 17:26 ?        00:00:00 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate
+root           6       2       7  0    2 17:26 ?        00:00:00 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate
+root          51       1      51  0    1 17:26 ?        00:00:00 /usr/lib/systemd/systemd-journald
+root          96       1      96  0    1 17:26 ?        00:00:00 /usr/lib/systemd/systemd-udevd
+systemd+     106       1     106  0    1 17:26 ?        00:00:00 /usr/lib/systemd/systemd-resolved
+systemd+     107       1     107  0    2 17:26 ?        00:00:00 /usr/lib/systemd/systemd-timesyncd
+systemd+     107       1     152  0    2 17:26 ?        00:00:00 /usr/lib/systemd/systemd-timesyncd
+root         158       1     158  0    1 17:26 ?        00:00:00 /usr/sbin/cron -f -P
+message+     159       1     159  0    1 17:26 ?        00:00:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         166       1     166  0    1 17:26 ?        00:00:00 /usr/lib/systemd/systemd-logind
+root         169       1     169  0    8 17:26 ?        00:00:00 /usr/libexec/wsl-pro-service -vv
+root         169       1     200  0    8 17:26 ?        00:00:00 /usr/libexec/wsl-pro-service -vv
+root         169       1     202  0    8 17:26 ?        00:00:00 /usr/libexec/wsl-pro-service -vv
+root         169       1     203  0    8 17:26 ?        00:00:00 /usr/libexec/wsl-pro-service -vv
+root         169       1     205  0    8 17:26 ?        00:00:00 /usr/libexec/wsl-pro-service -vv
+root         169       1     208  0    8 17:26 ?        00:00:00 /usr/libexec/wsl-pro-service -vv
+root         169       1     219  0    8 17:26 ?        00:00:00 /usr/libexec/wsl-pro-service -vv
+root         169       1     221  0    8 17:26 ?        00:00:00 /usr/libexec/wsl-pro-service -vv
+root         174       1     174  0    1 17:26 hvc0     00:00:00 /sbin/agetty -o -p -- \u --noclear --keep-baud - 115200,38400,9600 vt220
+root         181       1     181  0    1 17:26 tty1     00:00:00 /sbin/agetty -o -p -- \u --noclear - linux
+syslog       182       1     182  0    4 17:26 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+syslog       182       1     197  0    4 17:26 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+syslog       182       1     198  0    4 17:26 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+syslog       182       1     199  0    4 17:26 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+root         189       1     189  0    2 17:26 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         189       1     257  0    2 17:26 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         300       2     300  0    1 17:26 pts/1    00:00:00 /bin/login -f
+vanda        357       1     357  0    1 17:26 ?        00:00:00 /usr/lib/systemd/systemd --user
+vanda        358     357     358  0    1 17:26 ?        00:00:00 (sd-pam)
+vanda        369     300     369  0    1 17:26 pts/1    00:00:00 -bash
+root         405       2     405  0    1 17:26 ?        00:00:00 /init
+root         406     405     406  0    1 17:26 ?        00:00:00 /init
+vanda        407     406     407  0    1 17:26 pts/0    00:00:00 -bash
+root         699       1     699  0    4 17:28 ?        00:00:00 /usr/libexec/packagekitd
+root         699       1     700  0    4 17:28 ?        00:00:00 /usr/libexec/packagekitd
+root         699       1     701  0    4 17:28 ?        00:00:00 /usr/libexec/packagekitd
+root         699       1     702  0    4 17:28 ?        00:00:00 /usr/libexec/packagekitd
+polkitd      704       1     704  0    4 17:28 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
+polkitd      704       1     706  0    4 17:28 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
+polkitd      704       1     707  0    4 17:28 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
+polkitd      704       1     708  0    4 17:28 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
+vanda       1224     407    1224  0    1 17:32 pts/0    00:00:00 ps -eLf
+vanda       1225     407    1225  0    1 17:32 pts/0    00:00:00 tee outputs/04_ps.txt

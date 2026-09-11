@@ -1,0 +1,33 @@
+top - 17:32:24 up 5 min,  1 user,  load average: 0.00, 0.03, 0.00
+Tasks:  26 total,   1 running,  25 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   3818.0 total,   2674.8 free,    596.6 used,    770.2 buff/cache     
+MiB Swap:   1024.0 total,   1024.0 free,      0.0 used.   3221.4 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 root      20   0   22092  13432   9608 S   0.0   0.3   0:01.06 systemd
+      2 root      20   0    2776   1924   1796 S   0.0   0.0   0:00.00 init-sy+
+      6 root      20   0    2776    132    132 S   0.0   0.0   0:00.00 init
+     51 root      19  -1   50428  15964  14824 S   0.0   0.4   0:00.14 systemd+
+     96 root      20   0   23992   6288   5024 S   0.0   0.2   0:00.16 systemd+
+    106 systemd+  20   0   21452  12044   9848 S   0.0   0.3   0:00.09 systemd+
+    107 systemd+  20   0   91020   6464   5616 S   0.0   0.2   0:00.06 systemd+
+    158 root      20   0    4236   2768   2532 S   0.0   0.1   0:00.00 cron
+    159 message+  20   0    9648   5320   4612 S   0.0   0.1   0:00.13 dbus-da+
+    166 root      20   0   17976   8264   7244 S   0.0   0.2   0:00.07 systemd+
+    169 root      20   0 1756096  16204   9632 S   0.0   0.4   0:00.07 wsl-pro+
+    174 root      20   0    3160   1156   1068 S   0.0   0.0   0:00.00 agetty
+    181 root      20   0    3116   1188   1104 S   0.0   0.0   0:00.00 agetty
+    182 syslog    20   0  222508   5408   4564 S   0.0   0.1   0:00.04 rsyslogd
+    189 root      20   0  107024  22268  12936 S   0.0   0.6   0:00.14 unatten+
+    300 root      20   0    6692   4748   3964 S   0.0   0.1   0:00.00 login
+    357 vanda     20   0   20256  11516   9440 S   0.0   0.3   0:00.06 systemd
+    358 vanda     20   0   21148   1728      0 S   0.0   0.0   0:00.00 (sd-pam)
+    369 vanda     20   0    6072   5264   3628 S   0.0   0.1   0:00.01 bash
+    405 root      20   0    2780    212     80 S   0.0   0.0   0:00.00 Session+
+    406 root      20   0    2780    216     80 S   0.0   0.0   0:00.03 Relay(4+
+    407 vanda     20   0    6072   5372   3652 S   0.0   0.1   0:00.05 bash
+    699 root      20   0  370072  20764  17852 S   0.0   0.5   0:00.02 package+
+    704 polkitd   20   0  308164   7892   7040 S   0.0   0.2   0:00.05 polkitd
+   1222 vanda     20   0    9332   5572   3456 R   0.0   0.1   0:00.00 top
+   1223 vanda     20   0    3132   1088    996 S   0.0   0.0   0:00.00 tee
