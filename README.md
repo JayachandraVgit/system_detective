@@ -1,6 +1,6 @@
 # System Detective — CIE-1
 
-Computer Organisation & Operating Systems (CO1)
+Operating Systems
 
 ## Objective
 
