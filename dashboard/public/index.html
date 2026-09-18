@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Detective</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>System Detective</h1>
+    <p>Computer Organisation & Operating Systems — System Dashboard</p>
+</header>
+
+<main>
+
+    <section class="card">
+        <h2>CPU / ISA</h2>
+        <div id="cpu"></div>
+    </section>
+
+    <section class="card">
+        <h2>Memory Usage</h2>
+        <div id="memory"></div>
+    </section>
+
+    <section class="card">
+        <h2>Top 5 Processes</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>PID</th>
+                    <th>Process</th>
+                    <th>State</th>
+                    <th>CPU %</th>
+                    <th>Memory %</th>
+                </tr>
+            </thead>
+
+            <tbody id="processes"></tbody>
+        </table>
+    </section>
+
+    <section class="card">
+        <h2>Memory Locality</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Run</th>
+                    <th>Row-major (s)</th>
+                    <th>Column-major (s)</th>
+                    <th>Ratio</th>
+                </tr>
+            </thead>
+
+            <tbody id="locality"></tbody>
+        </table>
+    </section>
+
+</main>
+
+<footer>
+    <p>Live data from WSL2 Ubuntu</p>
+    <p id="updated"></p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
