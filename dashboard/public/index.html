@@ -12,18 +12,23 @@
 <header>
     <h1>System Detective</h1>
     <p>Computer Organisation & Operating Systems — System Dashboard</p>
+    <button id="refreshBtn">Refresh Data</button>
 </header>
 
 <main>
 
-    <section class="card">
-        <h2>CPU / ISA</h2>
-        <div id="cpu"></div>
-    </section>
+    <section class="stats-grid">
 
-    <section class="card">
-        <h2>Memory Usage</h2>
-        <div id="memory"></div>
+        <div class="card">
+            <h2>CPU / ISA</h2>
+            <div id="cpu"></div>
+        </div>
+
+        <div class="card">
+            <h2>Memory Usage</h2>
+            <div id="memory"></div>
+        </div>
+
     </section>
 
     <section class="card">
@@ -46,6 +51,26 @@
 
     <section class="card">
         <h2>Memory Locality</h2>
+
+        <div id="locality-summary"></div>
+
+        <div class="locality-chart">
+            <div class="bar-row">
+                <span>Row-major</span>
+                <div class="bar-container">
+                    <div id="row-bar" class="bar"></div>
+                </div>
+                <span id="row-time"></span>
+            </div>
+
+            <div class="bar-row">
+                <span>Column-major</span>
+                <div class="bar-container">
+                    <div id="column-bar" class="bar"></div>
+                </div>
+                <span id="column-time"></span>
+            </div>
+        </div>
 
         <table>
             <thead>

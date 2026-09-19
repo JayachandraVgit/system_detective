@@ -42,8 +42,11 @@ async function loadDashboard() {
         localityTable.innerHTML = "";
 
         data.locality.forEach(result => {
+
+            const isMean = result.run === "mean";
+
             localityTable.innerHTML += `
-                <tr>
+                <tr class="${isMean ? "mean-row" : ""}">
                     <td>${result.run}</td>
                     <td>${result.rowMajor}</td>
                     <td>${result.columnMajor}</td>
@@ -51,6 +54,37 @@ async function loadDashboard() {
                 </tr>
             `;
         });
+
+        // Locality summary
+        const mean = data.locality.find(result => result.run === "mean");
+
+        if (mean) {
+            document.getElementById("locality-summary").innerHTML = `
+                <div class="locality-summary">
+                    <strong>Mean comparison:</strong>
+                    Row-major ${mean.rowMajor}s vs
+                    Column-major ${mean.columnMajor}s
+                    — ${mean.ratio}× ratio
+                </div>
+            `;
+
+            const rowTime = parseFloat(mean.rowMajor);
+            const columnTime = parseFloat(mean.columnMajor);
+
+            const maxTime = Math.max(rowTime, columnTime);
+
+            document.getElementById("row-bar").style.width =
+                `${(rowTime / maxTime) * 100}%`;
+
+            document.getElementById("column-bar").style.width =
+                `${(columnTime / maxTime) * 100}%`;
+
+            document.getElementById("row-time").textContent =
+                `${mean.rowMajor}s`;
+
+            document.getElementById("column-time").textContent =
+                `${mean.columnMajor}s`;
+        }
 
         document.getElementById("updated").textContent =
             "Last updated: " + new Date().toLocaleTimeString();
@@ -60,4 +94,10 @@ async function loadDashboard() {
     }
 }
 
+document.getElementById("refreshBtn").addEventListener(
+    "click",
+    loadDashboard
+);
+
 loadDashboard();
+
