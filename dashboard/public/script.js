@@ -101,3 +101,52 @@ document.getElementById("refreshBtn").addEventListener(
 
 loadDashboard();
 
+async function runLocalityExperiment() {
+
+    const button = document.getElementById("runLocalityBtn");
+    const status = document.getElementById("locality-status");
+    const output = document.getElementById("locality-output");
+
+    button.disabled = true;
+    button.textContent = "Running...";
+
+    status.textContent = "Compiling and running locality benchmark...";
+    output.textContent = "";
+
+    try {
+
+        const response = await fetch("/api/locality/run", {
+            method: "POST"
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error);
+        }
+
+        output.textContent = data.output;
+
+        status.textContent =
+            "Locality experiment completed successfully.";
+
+        await loadDashboard();
+
+    } catch (error) {
+
+        status.textContent =
+            "Locality experiment failed.";
+
+        output.textContent = error.message;
+
+    } finally {
+
+        button.disabled = false;
+        button.textContent = "Run Locality Experiment";
+    }
+}
+
+document.getElementById("runLocalityBtn").addEventListener(
+    "click",
+    runLocalityExperiment
+);

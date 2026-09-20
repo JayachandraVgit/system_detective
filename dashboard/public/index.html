@@ -12,7 +12,10 @@
 <header>
     <h1>System Detective</h1>
     <p>Computer Organisation & Operating Systems — System Dashboard</p>
-    <button id="refreshBtn">Refresh Data</button>
+    <div class="header-buttons">
+    	<button id="refreshBtn">Refresh Data</button>
+    	<button id="runLocalityBtn">Run Locality Experiment</button>
+    </div>
 </header>
 
 <main>
@@ -84,7 +87,12 @@
 
             <tbody id="locality"></tbody>
         </table>
-    </section>
+        	<div id="locality-status"></div>
+
+        	<pre id="locality-output"></pre>
+
+    
+	</section>
 
 </main>
 

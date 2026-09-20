@@ -5,12 +5,13 @@ const { exec } = require("child_process");
 
 const PORT = 3000;
 const PUBLIC_DIR = path.join(__dirname, "public");
+const LOCALITY_DIR = path.join(__dirname, "../locality");
 
-function runCommand(command) {
+function runCommand(command, options = {}) {
     return new Promise((resolve, reject) => {
-        exec(command, (error, stdout, stderr) => {
+        exec(command, options, (error, stdout, stderr) => {
             if (error) {
-                reject(error);
+                reject(new Error(stderr || error.message));
                 return;
             }
 
@@ -19,14 +20,31 @@ function runCommand(command) {
     });
 }
 
+function parseLocality(csv) {
+    const lines = csv.trim().split("\n").slice(1);
+
+    return lines.map(line => {
+        const parts = line.split(",");
+
+        return {
+            run: parts[0],
+            rowMajor: parts[1],
+            columnMajor: parts[2],
+            ratio: parts[3]
+        };
+    });
+}
+
 async function getSystemData() {
     const [cpuRaw, memoryRaw, processesRaw, localityRaw] =
         await Promise.all([
             runCommand("lscpu"),
             runCommand("free -h"),
-            runCommand("ps -eo pid,comm,stat,%cpu,%mem --sort=-%cpu | head -n 6"),
+            runCommand(
+                "ps -eo pid,comm,stat,%cpu,%mem --sort=-%cpu | head -n 6"
+            ),
             fs.promises.readFile(
-                path.join(__dirname, "../locality/results.csv"),
+                path.join(LOCALITY_DIR, "results.csv"),
                 "utf8"
             )
         ]);
@@ -72,18 +90,7 @@ async function getSystemData() {
         };
     });
 
-    const localityLines = localityRaw.trim().split("\n").slice(1);
-
-    const locality = localityLines.map(line => {
-        const parts = line.split(",");
-
-        return {
-            run: parts[0],
-            rowMajor: parts[1],
-            columnMajor: parts[2],
-            ratio: parts[3]
-        };
-    });
+    const locality = parseLocality(localityRaw);
 
     return {
         cpu,
@@ -93,9 +100,29 @@ async function getSystemData() {
     };
 }
 
+async function runLocalityExperiment() {
+    const output = await runCommand(
+        "gcc -O2 locality.c -o locality_c && ./locality_c",
+        {
+            cwd: LOCALITY_DIR
+        }
+    );
+
+    const csv = await fs.promises.readFile(
+        path.join(LOCALITY_DIR, "results.csv"),
+        "utf8"
+    );
+
+    return {
+        output,
+        locality: parseLocality(csv)
+    };
+}
+
 const server = http.createServer(async (req, res) => {
 
-    if (req.url === "/api/system") {
+    // Live system data
+    if (req.method === "GET" && req.url === "/api/system") {
         try {
             const data = await getSystemData();
 
@@ -118,6 +145,37 @@ const server = http.createServer(async (req, res) => {
         return;
     }
 
+    // Run locality benchmark
+    if (req.method === "POST" && req.url === "/api/locality/run") {
+        try {
+            console.log("Running locality experiment...");
+
+            const result = await runLocalityExperiment();
+
+            console.log("Locality experiment completed.");
+
+            res.writeHead(200, {
+                "Content-Type": "application/json"
+            });
+
+            res.end(JSON.stringify(result));
+
+        } catch (error) {
+            console.error("Locality experiment failed:", error);
+
+            res.writeHead(500, {
+                "Content-Type": "application/json"
+            });
+
+            res.end(JSON.stringify({
+                error: error.message
+            }));
+        }
+
+        return;
+    }
+
+    // Serve frontend files
     let filePath = req.url === "/"
         ? path.join(PUBLIC_DIR, "index.html")
         : path.join(PUBLIC_DIR, req.url);
@@ -147,5 +205,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-    console.log(`System Detective Dashboard running at http://localhost:${PORT}`);
+    console.log(
+        `System Detective Dashboard running at http://localhost:${PORT}`
+    );
 });
