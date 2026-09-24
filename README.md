@@ -67,6 +67,11 @@ system-detective/
 ├── day5_notes.md
 ├── day6_notes.md
 ├── day7_notes.md
+├── day8_notes.md
+├── day9_notes.md
+├── day10_notes.md
+├── day11_notes.md
+├── day12_notes.md
 ├── ai_log.md
 ├── outputs/
 │   ├── 01_lscpu.txt
