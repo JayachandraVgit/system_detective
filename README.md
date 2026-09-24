@@ -54,37 +54,46 @@ Row-major traversal was significantly faster because C stores multidimensional a
 The experiment source is available in:
 
 locality/locality.c
-
 ## Project Structure
-```text
 
+```text
 system-detective/
 ├── README.md
-├── day1_notes.md
-├── day2_notes.md
-├── day3_notes.md
-├── day4_notes.md
-├── day5_notes.md
-├── day6_notes.md
-├── day7_notes.md
-├── day8_notes.md
-├── day9_notes.md
-├── day10_notes.md
-├── day11_notes.md
-├── day12_notes.md
+├── .gitignore
 ├── ai_log.md
+├── Day9_Dashboard.pdf
+├── Day10_Dashboard.pdf
+├── Notes/
+│   ├── day1_notes.md
+│   ├── day2_notes.md
+│   ├── day3_notes.md
+│   ├── day4_notes.md
+│   ├── day5_notes.md
+│   ├── day6_notes.md
+│   ├── day7_notes.md
+│   ├── day8_notes.md
+│   ├── day9_notes.md
+│   ├── day10_notes.md
+│   ├── day11_notes.md
+│   └── day12_notes.md
+├── Reports/
+├── dashboard/
+│   ├── server.js
+│   └── public/
+│       ├── index.html
+│       ├── style.css
+│       └── script.js
+├── locality/
+│   ├── locality.c
+│   ├── locality_c
+│   ├── results.csv
+│   └── results_day6.csv
 ├── outputs/
 │   ├── 01_lscpu.txt
 │   ├── 02_free.txt
 │   ├── 03_top.txt
 │   ├── 04_ps.txt
 │   └── 05_strace.txt
-├── locality/
-│   ├── locality.c
-│   ├── locality_c
-│   ├── results.csv
-│   └── results_day6.csv
-├── dashboard/
 └── screenshots/
     ├── checkpoint1_01_lscpu.png
     ├── checkpoint1_02_free.png
@@ -92,3 +101,4 @@ system-detective/
     ├── checkpoint1_04_ps.png
     ├── checkpoint1_05_strace.png
     └── checkpoint2_locality.png
+    
